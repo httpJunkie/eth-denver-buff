@@ -1,8 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const Dotenv = require('dotenv-webpack');
 
-module.exports = (env) => {
+module.exports = () => {
   return {
     entry: ["regenerator-runtime/runtime.js", "./app/index.js"],
     module: {
@@ -50,9 +49,6 @@ module.exports = (env) => {
       contentBase: path.resolve(__dirname, './dist'),
     },
     plugins: [
-      new Dotenv({
-        path: `./environments/.env${env.file ? `.${env.file}` : ''}`
-      }),
       new HtmlWebpackPlugin({
         template: "app/index.html"
       })
